@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">What do you need?</h4>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="ddlFixTypes">Fix for</label>
+                        <select class="form-control"
+                            id="ddlFixTypes"
+                            ng-model="currentFixTransaction.FixType"
+                            ng-options="eachfixType.FixTypeName for eachfixType in fixTypesList track by eachfixType.FixTypeId">
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="txtDatabase">Database</label>
+                        <input type="text" class="form-control" id="txtDatabase"
+                            placeholder="Enter database name" 
+                            ng-model="currentFixTransaction.DatabaseName" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"
+            ng-show="currentFixTransaction.FixType.FixTypeId > 0">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Specify required info</h4>
+
+                <div class="row"
+                    id="divBadLease"
+                    ng-show="currentFixTransaction.FixType.FixTypeId == 1">
+                    <div class="col-md-6 mb-3">
+                        <label for="txtBadLeaseBadLeaseId">Bad lease Id</label>
+                        <input type="text" class="form-control" id="txtBadLeaseBadLeaseId"
+                            placeholder="Enter bad lease Id" 
+                            ng-model="currentFixTransaction.BadLeaseId" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="txtBadLeaseGoodLeaseId">Good lease Id</label>
+                        <input type="text" class="form-control" id="txtBadLeaseGoodLeaseId"
+                            placeholder="Enter good lease Id" 
+                            ng-model="currentFixTransaction.GoodLeaseId" required>
+                    </div>
+                </div>
+
+                <div class="row"
+                    id="divForceApply"
+                    ng-show="currentFixTransaction.FixType.FixTypeId == 2">
+                    <div class="col-md-6 mb-3">
+                        <label for="txtForceApplyResidentHouseholdId">Resident household Id</label>
+                        <input type="text" class="form-control" id="txtForceApplyResidentHouseholdId"
+                            placeholder="Enter resident household Id" 
+                            ng-model="currentFixTransaction.ResidentHouseholdId" required>
+                    </div>
+                </div>
+
+                <div class="row"
+                    id="divResetReshBalances"
+                    ng-show="currentFixTransaction.FixType.FixTypeId == 3">
+
+                    <div class="col-md-6 mb-3">
+                        <label for="txtResetReshBalancesResidentHouseholdId">Resident household Id</label>
+                        <input type="text" class="form-control" id="Text1"
+                            placeholder="Enter resident household Id" 
+                            ng-model="currentFixTransaction.ResidentHouseholdId" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="checkbox" class="form-check-input" id="chkResetReshBalancesUseSubjournal"
+                            ng-model="currentFixTransaction.UseSubjournal"
+                            ng-change="clearSubjournal()">
+                        <label class="form-check-label" for="chkResetReshBalancesUseSubjournal">Uses subjournal?</label>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="txtResetReshBalancesSubjournal">Subjournal</label>
+                        <input type="text" class="form-control" id="txtResetReshBalancesSubjournal"
+                            ng-disabled="!currentFixTransaction.UseSubjournal"
+                            placeholder="Enter subjournal" 
+                            ng-model="currentFixTransaction.Subjournal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

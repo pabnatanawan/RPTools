@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *; img-src 'self' * data: blob: filesystem:;" />
+
+    <title>OS Tools</title>
+
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="scripts/angular-1.6.7/angular.js"></script>
+
+    <script src="scripts/angular-1.6.7/angular-animate.js"></script>
+    <script src="scripts/angular-1.6.7/angular-sanitize.js"></script>
+
+    <script src="scripts/ui-bootstrap-tpls.js"></script>
+    <script src="scripts/ui-router.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body ng-app="OSToolsApp" ng-controller="indexCtrl">
+
+    <section id="page-wrapper" style="height: 100%;">
+        <header>
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                <a class="navbar-brand" ui-sref="login">OS Tools</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsOSTools" aria-controls="navbarsOSTools" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsOSTools">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="tools">Tools</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="about">About</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-md-0">
+                        <input type="text" class="form-control"
+                            placeholder="Search" aria-label="Search" aria-describedby="basic-addon2"
+                            ng-model="SearchText">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container-fluid">
+            <br />
+            <div class="view" ui-view></div>
+        </div>
+
+        <footer class="container-fluid">
+            <hr />
+
+            <p class="text-center small">©2018</p>
+        </footer>
+    </section>
+
+    <script src="app.js"></script>
+    <script src="scripts/bootstrap/bootstrap.min.js"></script>
+
+    <!--factories-->
+    <script src="factories/users.js"></script>
+    <script src="factories/fixtypes.js"></script>
+
+    <!--controllers-->
+    <script src="controllers/index.js"></script>
+    <script src="controllers/login.js"></script>
+    <script src="controllers/tools.js"></script>
+    <script src="controllers/about.js"></script>
+</body>
+</html>
